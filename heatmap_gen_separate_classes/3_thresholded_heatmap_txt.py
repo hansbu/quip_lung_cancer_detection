@@ -22,6 +22,9 @@ def process(file):
         res = probs[np.argmax(grades)] if sum(grades) > 0 else 0
         out.writelines('{} {} {} 0 \n'.format(pred[0], pred[1], res))
 
+    color_fn = 'color-' + slide_id.split('prediction-')[-1]
+    os.system('cp {} {}'.format(os.path.join(in_fol, color_fn), os.path.join(out_fol, color_fn)))
+
     out.close()
 
 print(len(files))
